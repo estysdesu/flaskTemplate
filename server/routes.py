@@ -1,9 +1,10 @@
 from flask import Flask
+import flask
 from server import app
 
 
 @app.route("/index/")
 @app.route("/")
-def home():
-    return "Hello, World!"
+def index():
+    return flask.render_template("index.html")
 
