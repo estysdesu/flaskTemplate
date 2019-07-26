@@ -32,13 +32,19 @@
 
             <div class="navbar-brand">
                 <a class="navbar-item is-uppercase" href="{{ url_for('index') }}">
-                    Home
+                    Title
                 </a>
                 <a class="navbar-burger" data-target="navbarContent">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
+            </div>
+
+            <div class="navbar-menu" id="navbarContent">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="{{ url_for('index') }}">Home</a>
+                </div>
             </div>
 
         </nav>

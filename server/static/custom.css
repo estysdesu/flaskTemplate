@@ -1,9 +1,28 @@
+/* STICKY FOOTER */
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
-
 main {
   flex: 1;
+}
+
+/* HEADER */
+/* match is-dark theme for navbar-burger bc bulma doesn't by default */
+@media screen and (max-width: 1087px) {
+    .navbar-menu {
+        background-color: hsl(0, 0%, 21%);
+    }
+    .navbar-item {
+        color: whitesmoke;
+        text-align: center;
+    }
+    a.navbar-item:hover {
+        background-color: #292929;
+        color: whitesmoke;
+    }
+    .navbar-burger:hover {
+        background-color: #292929;
+    }
 }
