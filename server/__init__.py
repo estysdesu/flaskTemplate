@@ -3,15 +3,15 @@ import os
 
 import flask
 from flask import Flask
-
+from server import flask_log_handlers
 
 app = Flask(__name__, instance_relative_config=True)
+
+# setup config
 app.config.from_object("config.default")
 app.config.from_pyfile("config.py")
 
 # setup logger
-from . import flask_log_handlers
-
 app.logger.removeHandler(flask.logging.default_handler)
 log_file_dir = os.path.join(os.getcwd(), ".log")
 flask_log_handlers.logger_setup(
