@@ -1,6 +1,48 @@
 {% extends "base.html" %}
 
 {% block main %}
-<h1>Index</h1>
-<p>Welcome.</p>
+
+
+{% with fl_err_msgs = get_flashed_messages(category_filter=["error"]) %}
+{% if fl_err_msgs %}
+<section class="section" id="flashes">
+    <div class="container is-centered">
+        {% for err_msg in fl_err_msgs %}
+        <article class="message is-error">
+            <div class="message-header">
+                <p>Error</p>
+                <button class="delete" onclick="toggleMessage(event)"></button>
+            </div>
+            <div class="message-body">
+                {{ err_msg|safe }}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endwith %}
+
+<section class="section">
+
+    <div class="container is-centered">
+        <form action="{{ url_for('data_dir_post') }}" method="post">
+            <label class="label is-large">Data directory</label>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input class="input is-large" type="text" name="data_dir" placeholder={% if data_dir is defined %}
+                        {{ data_dir }} {% else %} "C:\Users\<user>\data_dir" {% endif %}>
+                </div>
+                <div class="control">
+                    <input class="button is-large is-dark" type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+</section>
+
+
 {% endblock main %}

@@ -23,3 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+function toggleMessage(event) {
+    var delNode = event.target;
+    var msgNode = delNode.closest(".message");
+    msgNode.parentNode.removeChild(msgNode);
+
+    var flashNode = document.getElementById("flashes");
+    if (flashNode.firstChild.childNodes.length == 0) {
+        flashNode.parentNode.removeChild(flashNode)
+    }
+}
