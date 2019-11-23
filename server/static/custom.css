@@ -6,6 +6,9 @@ body {
 }
 main {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* HEADER */
@@ -39,4 +42,31 @@ main {
 .footer {
     padding: 1.5rem 1.5rem 1.5rem;
     line-height: 1;
+}
+
+/* SPLIT-HALF */
+.split-half {
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-charity {
+    width: 100px;
+    flex-grow: 1;
+}
+
+.div-flavor {
+    width: 100px;
+    flex-grow: 1;
+}
+
+.button-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.button-list-item {
+    flex-grow: 1;
+    width: 90%;
 }
