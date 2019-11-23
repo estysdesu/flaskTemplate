@@ -69,5 +69,6 @@ main {
 }
 
 .button-list-item {
+    flex-grow: 1;
     width: 90%;
 }
