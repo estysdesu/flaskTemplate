@@ -1,4 +1,0 @@
-black
-mypy
-flask
-python-dotenv

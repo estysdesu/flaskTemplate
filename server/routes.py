@@ -1,8 +1,5 @@
-import os
-from flask import Flask
 import flask
 from server import app
-import server.controllers
 
 
 @app.route("/index/")

@@ -1,4 +1,4 @@
-ENV = "development"
-DEBUG = True
-TESTING = True
-SECRET_KEY = "whisper"
+ENV = "production"
+DEBUG = False
+TESTING = False
+SECRET_KEY = ""

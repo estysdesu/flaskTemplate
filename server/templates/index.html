@@ -1,47 +1,38 @@
 {% extends "base.html" %}
 
-{% block main %}
+{% block scripts %}
+{{super()}}
+<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script>
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+    var lonLat = new OpenLayers.LonLat(-0.1279688, 51.5077286)
+        .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+        );
+    var zoom = 16;
+    var markers = new OpenLayers.Layer.Markers("Markers");
+    map.addLayer(markers);
+    markers.addMarker(new OpenLayers.Marker(lonLat));
+    map.setCenter(lonLat, zoom);
+</script>
 
+<!-- TODO: map stuff-->
+{% endblock %}
 
-{% with fl_err_msgs = get_flashed_messages(category_filter=["error"]) %}
-{% if fl_err_msgs %}
-<section class="section" id="flashes">
-    <div class="container is-centered">
-        {% for err_msg in fl_err_msgs %}
-        <article class="message is-error">
-            <div class="message-header">
-                <p>Error</p>
-                <button class="delete" onclick="toggleMessage(event)"></button>
-            </div>
-            <div class="message-body">
-                {{ err_msg|safe }}
-            </div>
-        </article>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-{% endwith %}
-
-<section class="section">
-    <div class="columns">
-        <div id="div-charity column is-half">
-
-            {% with header="Charity", btn_list=["Oceans", "Turtles", "Trees", "Poverty"] %}
-            {% include "options.html" %}
-            {% endwith %}
-
-        </div>
-        <div id="div-flavor column is-half">
-
-            {% with header="Flavors", btn_list=["Blueberry Pomegranete", "Peach Mango", "Kiwi Lime", "Vanilla"] %}
-            {% include "options.html" %}
-            {% endwith %}
-
-        </div>
-    </div>
-</section>
-
-
-
-{% endblock main %}
+{% block content %}
+<div class="container">
+    <h2 id="about">About</h2>
+    <p>Apex Cabinetry has been in business since 1997 and our sales have increased significantly each year. In 2004 we
+        provided and installed more than 2 million dollars worth of product.</p>
+    <p>Our scope of work include commerical casework, millwork, store fixtures, solid surface, phenolic resin labatory
+        tops, and granite. We also have extensive experience in unique finishing techniques, such as; touch-up, custom
+        matching any stain color,poured on finishes and marbleizing.</p>
+    <p>Delivery and installation is available within a 150 mile range of Cincinnati with nationwide shipping. Our
+        cabinetmakers have from 4 to 22 years experience working in all areas of woodworking industry.</p>
+    <h2 id="experience">Experience</h2>
+    <div id="mapdiv"></div>
+    <h2 id="contact">Contact</h2>
+</div>
+{% endblock %}
